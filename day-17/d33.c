@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int main()
+{
+    int n, original, temp;
+    int digit, count = 0;
+    int sum = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    original = n;
+    temp = n;
+
+    // Count number of digits
+    while (temp != 0)
+    {
+        count++;
+        temp = temp / 10;
+    }
+
+    temp = n;
+
+    // Calculate Armstrong sum
+    while (temp != 0)
+    {
+        digit = temp % 10;
+
+        int power = 1;
+
+        for (int i = 1; i <= count; i++)
+        {
+            power = power * digit;
+        }
+
+        sum = sum + power;
+
+        temp = temp / 10;
+    }
+
+    if (sum == original)
+        printf("%d is an Armstrong number.", original);
+    else
+        printf("%d is not an Armstrong number.", original);
+
+    return 0;
+}
